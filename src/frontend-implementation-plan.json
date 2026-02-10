@@ -1,0 +1,99 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Integrate static photo/audio/video assets in public root (filename-only)",
+  "requirements": [
+    {
+      "id": "REQ-18",
+      "summary": "Place the 4 uploaded images in the static public root and map them to photo1.jpg–photo4.jpg (filename-only) for Slide 2.",
+      "acceptanceCriteria": [
+        "The deployed app serves the four uploaded images at /photo1.jpg, /photo2.jpg, /photo3.jpg, /photo4.jpg (public root).",
+        "Slide 2 displays the four photos (not placeholders) and tapping each still opens its corresponding popup message.",
+        "No code references are changed to include folders/paths for these photos; they remain filename-only (e.g., \"photo1.jpg\")."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/photo1.jpg",
+          "operation": "create",
+          "description": "Add the uploaded image Snapchat-1050840213.jpg to the app static public root under the exact required filename photo1.jpg (no subfolders)."
+        },
+        {
+          "path": "frontend/public/photo2.jpg",
+          "operation": "create",
+          "description": "Add the uploaded image Snapchat-611037636.jpg to the app static public root under the exact required filename photo2.jpg (no subfolders)."
+        },
+        {
+          "path": "frontend/public/photo3.jpg",
+          "operation": "create",
+          "description": "Add the uploaded image IMG_20260205_190742.jpg to the app static public root under the exact required filename photo3.jpg (no subfolders)."
+        },
+        {
+          "path": "frontend/public/photo4.jpg",
+          "operation": "create",
+          "description": "Add the uploaded image IMG_20260206_020104.jpg to the app static public root under the exact required filename photo4.jpg (no subfolders)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "summary": "Ensure a happy birthday song is available at the static public root as birthday.mp3 so the existing background-music flow works.",
+      "acceptanceCriteria": [
+        "After the user dismisses the start overlay and the 5-second countdown completes, the app successfully plays birthday.mp3 (looping, volume ~0.6).",
+        "If birthday.mp3 is missing, the app does not crash; it logs a warning at most and continues functioning."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/birthday.mp3",
+          "operation": "create",
+          "description": "Add the provided audio file \"Happy Birthday to You - piano instrumental with lyrics.mp3\" to the static public root under the exact required filename birthday.mp3 (no subfolders)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "summary": "Include video1.mp4 and video2.mp4 in the static public root (filename-only) and ensure missing videos remain non-fatal with warnings only.",
+      "acceptanceCriteria": [
+        "When valid MP4 files are present at /video1.mp4 and /video2.mp4, Slide 3 plays video1.mp4 and Slide 4 plays video2.mp4 via the existing heartbeat play button interaction.",
+        "If one or both videos are missing, the app remains usable, does not crash, and logs a warning at most.",
+        "No code references are changed to include folders/paths for these videos; they remain filename-only (e.g., \"video1.mp4\")."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/video1.mp4",
+          "operation": "create",
+          "description": "Add an MP4 file to the static public root under the exact required filename video1.mp4 (no subfolders). If using the provided asset Snapchat-1254858543.mp4, copy it here as video1.mp4."
+        },
+        {
+          "path": "frontend/public/video2.mp4",
+          "operation": "create",
+          "description": "Add an MP4 file to the static public root under the exact required filename video2.mp4 (no subfolders). If the user has not provided a second video yet, leave this file absent in the repo and rely on the app's graceful behavior as documented in ASSET_SETUP.md."
+        },
+        {
+          "path": "frontend/src/experience/slides/Slide3Video.tsx",
+          "operation": "modify",
+          "description": "Adjust the play-button interaction to remain graceful when video1.mp4 is missing/unplayable: only set isPlaying=true and call onVideoStart() after the play() promise resolves; keep current warning-only behavior on failure (no crash) and keep src as filename-only \"video1.mp4\"."
+        },
+        {
+          "path": "frontend/src/experience/slides/Slide4Video.tsx",
+          "operation": "modify",
+          "description": "Adjust the play-button interaction to remain graceful when video2.mp4 is missing/unplayable: only set isPlaying=true and call onVideoStart() after the play() promise resolves; keep current warning-only behavior on failure (no crash) and keep src as filename-only \"video2.mp4\"."
+        }
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "summary": "Update ASSET_SETUP.md to document the uploaded-filename to required-filename mapping and reiterate required public-root assets.",
+      "acceptanceCriteria": [
+        "ASSET_SETUP.md includes a clear mapping list from Snapchat-1050840213.jpg, Snapchat-611037636.jpg, IMG_20260205_190742.jpg, IMG_20260206_020104.jpg to photo1.jpg–photo4.jpg.",
+        "ASSET_SETUP.md continues to state that all assets must be in the public root with exact filenames and no subfolders."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/ASSET_SETUP.md",
+          "operation": "modify",
+          "description": "Add an explicit mapping section documenting: Snapchat-1050840213.jpg → photo1.jpg, Snapchat-611037636.jpg → photo2.jpg, IMG_20260205_190742.jpg → photo3.jpg, IMG_20260206_020104.jpg → photo4.jpg; reiterate required public-root filename-only assets birthday.mp3, video1.mp4, video2.mp4 and that missing videos are allowed (warning-only, no crash)."
+        }
+      ]
+    }
+  ]
+}

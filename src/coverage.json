@@ -1,0 +1,76 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-10T22:25:31.556Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-18",
+        "summary": "Add the 4 user-uploaded images to the app’s static public root and map them to the exact filenames required by Slide 2: photo1.jpg, photo2.jpg, photo3.jpg, photo4.jpg (no folder paths). Use these source files in order: Snapchat-1050840213.jpg -> photo1.jpg, Snapchat-611037636.jpg -> photo2.jpg, IMG_20260205_190742.jpg -> photo3.jpg, IMG_20260206_020104.jpg -> photo4.jpg.",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/public/photo1.jpg",
+          "frontend/public/photo2.jpg",
+          "frontend/public/photo3.jpg",
+          "frontend/public/photo4.jpg"
+        ],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-19",
+        "summary": "Ensure a happy birthday song file is available at the static public root with the exact filename birthday.mp3 so the existing background-music flow (start after countdown, volume 0.6, loop) works as implemented.",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/public/birthday.mp3"
+        ],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-20",
+        "summary": "Support the user’s request to “add these videos” by ensuring the build/deployment includes two video files at the static public root named video1.mp4 and video2.mp4 (filename-only). If the user has not provided videos yet, keep the existing graceful behavior (warnings/placeholder behavior; no crash) and document that video1.mp4 and video2.mp4 are required assets.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/video1.mp4",
+          "frontend/public/video2.mp4",
+          "frontend/src/experience/slides/Slide3Video.tsx",
+          "frontend/src/experience/slides/Slide4Video.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/experience/slides/Slide3Video.tsx",
+          "frontend/src/experience/slides/Slide4Video.tsx"
+        ]
+      },
+      {
+        "id": "REQ-21",
+        "summary": "Update frontend/ASSET_SETUP.md to explicitly document the mapping from the uploaded filenames to the required template filenames (photo1.jpg–photo4.jpg) and reiterate the required filenames for video1.mp4, video2.mp4, and birthday.mp3 in the public root.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/ASSET_SETUP.md"
+        ],
+        "matchedFiles": [
+          "frontend/ASSET_SETUP.md"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/ASSET_SETUP.md",
+    "frontend/src/experience/slides/Slide3Video.tsx",
+    "frontend/src/experience/slides/Slide4Video.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-support-the-user-s-request-to-add-these-videos-by-ensuring-the-build-deployment-includes-two-video-files-at-the-static-public-root-named-video1-mp4-and-video2-mp4-filename-only-if-the-user-has-not-provided-videos-yet-keep-the-existing-graceful-behavior-warnings-placeholder-behavior-no-crash-and-document-that-video1-mp4-and-video2-mp4-are-required-assets",
+      "featureTitle": "Support the user’s request to “add these videos” by ensuring the build/deployment includes two video files at the static public root named video1.mp4 and video2.mp4 (filename-only). If the user has not provided videos yet, keep the existing graceful behavior (warnings/placeholder behavior; no crash) and document that video1.mp4 and video2.mp4 are required assets.",
+      "files": [
+        "frontend/src/experience/slides/Slide3Video.tsx",
+        "frontend/src/experience/slides/Slide4Video.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-20"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-frontend-asset-setup-md-to-explicitly-document-the-mapping-from-the-uploaded-filenames-to-the-required-template-filenames-photo1-jpg-photo4-jpg-and-reiterate-the-required-filenames-for-video1-mp4-video2-mp4-and-birthday-mp3-in-the-public-root",
+      "featureTitle": "Update frontend/ASSET_SETUP.md to explicitly document the mapping from the uploaded filenames to the required template filenames (photo1.jpg–photo4.jpg) and reiterate the required filenames for video1.mp4, video2.mp4, and birthday.mp3 in the public root.",
+      "files": [
+        "frontend/ASSET_SETUP.md"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-21"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

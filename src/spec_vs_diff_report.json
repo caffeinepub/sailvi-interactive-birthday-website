@@ -1,0 +1,61 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-10T22:25:31.553Z",
+  "summary": "Docs and video slide components were updated to reference video1.mp4/video2.mp4 with improved graceful playback handling and to document asset setup. However, no actual static media files (photos, videos, birthday.mp3) were added to the public root in this diff, and ASSET_SETUP.md includes extra filename mappings not requested.",
+  "missing_requirements": [
+    {
+      "id": "REQ-18",
+      "requirement": "Add the 4 user-uploaded images to the app’s static public root and map them to the exact filenames required by Slide 2: photo1.jpg–photo4.jpg (no folder paths), using the provided source files in order.",
+      "reason": "The diff shows no new files added under a public root (no added files at all). Only documentation and TSX changes are present, so the required images cannot be confirmed as integrated/served at /photo1.jpg–/photo4.jpg from this diff.",
+      "evidence": [
+        "<file-diff>: Added: 0, Modified: 5, Removed: 0",
+        "frontend/ASSET_SETUP.md"
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "requirement": "Ensure a happy birthday song file is available at the static public root with the exact filename birthday.mp3 so the existing background-music flow works.",
+      "reason": "No static asset file birthday.mp3 was added in the diff (no added files). Documentation mentions birthday.mp3, but the requirement is to ensure the file is available in the public root.",
+      "evidence": [
+        "<file-diff>: Added: 0, Modified: 5, Removed: 0",
+        "frontend/ASSET_SETUP.md"
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "requirement": "Ensure the build/deployment includes two video files at the static public root named video1.mp4 and video2.mp4 (filename-only), while keeping graceful behavior if missing and documenting required assets.",
+      "reason": "The diff updates Slide3/Slide4 to reference filename-only sources and adds documentation, but does not add video1.mp4 or video2.mp4 to the repository/public root (no added files), so inclusion in build/deployment is not implemented in this diff.",
+      "evidence": [
+        "<file-diff>: Added: 0, Modified: 5, Removed: 0",
+        "frontend/src/experience/slides/Slide3Video.tsx",
+        "frontend/src/experience/slides/Slide4Video.tsx",
+        "frontend/ASSET_SETUP.md"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "ASSET_SETUP.md adds specific uploaded-to-template mappings for a video file (Snapchat-1254858543.mp4 → video1.mp4) and an audio file (Happy Birthday to You - piano instrumental with lyrics.mp3 → birthday.mp3), which were not part of the requested mapping requirements (REQ-21 only required photo filename mapping and reiteration of required filenames).",
+      "reason": "BuildRequest REQ-21 only asks to document the mapping for the four uploaded photo filenames to photo1.jpg–photo4.jpg, and to reiterate required filenames for video1.mp4, video2.mp4, and birthday.mp3. It does not request mapping from any provided source video/audio filenames to the template names.",
+      "evidence": [
+        "frontend/ASSET_SETUP.md"
+      ]
+    },
+    {
+      "description": "ASSET_SETUP.md labels video2.mp4 as “optional” with a graceful fallback note.",
+      "reason": "REQ-20 states that the deployment should include two video files named video1.mp4 and video2.mp4 (and if missing, the app should behave gracefully). Marking video2.mp4 as optional is not requested and may conflict with the stated requirement that two videos are required assets (even though graceful handling is needed if absent).",
+      "evidence": [
+        "frontend/ASSET_SETUP.md"
+      ]
+    }
+  ],
+  "confidence": 0.78,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/ASSET_SETUP.md",
+    "frontend/src/experience/slides/Slide3Video.tsx",
+    "frontend/src/experience/slides/Slide4Video.tsx",
+    "project_state.json"
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "kind": "build_request",
+  "title": "Integrate uploaded photos and ensure birthday song/video assets load",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-18",
+      "text": "Add the 4 user-uploaded images to the app’s static public root and map them to the exact filenames required by Slide 2: photo1.jpg, photo2.jpg, photo3.jpg, photo4.jpg (no folder paths). Use these source files in order: Snapchat-1050840213.jpg -> photo1.jpg, Snapchat-611037636.jpg -> photo2.jpg, IMG_20260205_190742.jpg -> photo3.jpg, IMG_20260206_020104.jpg -> photo4.jpg.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Add these photos and videos and add a happy birthday song"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The deployed app serves the four uploaded images at /photo1.jpg, /photo2.jpg, /photo3.jpg, /photo4.jpg (public root).",
+        "Slide 2 displays the four photos (not placeholders) and tapping each still opens its corresponding popup message.",
+        "No code references are changed to include folders/paths for these photos; they remain filename-only (e.g., \"photo1.jpg\")."
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "text": "Ensure a happy birthday song file is available at the static public root with the exact filename birthday.mp3 so the existing background-music flow (start after countdown, volume 0.6, loop) works as implemented.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Add these photos and videos and add a happy birthday song"
+        ]
+      },
+      "acceptanceCriteria": [
+        "After the user dismisses the start overlay and the 5-second countdown completes, the app successfully plays birthday.mp3 (looping, volume ~0.6).",
+        "If birthday.mp3 is missing, the app does not crash; it logs a warning at most and continues functioning."
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "text": "Support the user’s request to “add these videos” by ensuring the build/deployment includes two video files at the static public root named video1.mp4 and video2.mp4 (filename-only). If the user has not provided videos yet, keep the existing graceful behavior (warnings/placeholder behavior; no crash) and document that video1.mp4 and video2.mp4 are required assets.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Add these photos and videos and add a happy birthday song"
+        ]
+      },
+      "acceptanceCriteria": [
+        "When valid MP4 files are present at /video1.mp4 and /video2.mp4, Slide 3 plays video1.mp4 and Slide 4 plays video2.mp4 via the existing heartbeat play button interaction.",
+        "If one or both videos are missing, the app remains usable, does not crash, and logs a warning at most.",
+        "No code references are changed to include folders/paths for these videos; they remain filename-only (e.g., \"video1.mp4\")."
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "text": "Update frontend/ASSET_SETUP.md to explicitly document the mapping from the uploaded filenames to the required template filenames (photo1.jpg–photo4.jpg) and reiterate the required filenames for video1.mp4, video2.mp4, and birthday.mp3 in the public root.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Add these photos and videos and add a happy birthday song"
+        ]
+      },
+      "acceptanceCriteria": [
+        "ASSET_SETUP.md includes a clear mapping list from Snapchat-1050840213.jpg, Snapchat-611037636.jpg, IMG_20260205_190742.jpg, IMG_20260206_020104.jpg to photo1.jpg–photo4.jpg.",
+        "ASSET_SETUP.md continues to state that all assets must be in the public root with exact filenames and no subfolders."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not change the existing slide flow, media-gating behavior, or the filename-only asset rule; the app must continue to reference photo1.jpg–photo4.jpg, video1.mp4, video2.mp4, and birthday.mp3 by filename only (no folder paths).",
+    "Do not modify files under frontend/src/components/ui (immutable).",
+    "Backend must remain single-actor; no backend changes are required for static media integration."
+  ],
+  "nonGoals": [
+    "Creating new slides or changing existing slide text/content beyond asset integration.",
+    "Adding third-party media hosting, streaming, or external storage for photos/videos/music.",
+    "Implementing new authentication or backend persistence related to media uploads."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

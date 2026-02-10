@@ -1,0 +1,251 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Build a fully interactive single-page birthday website for Sailvi (HTML/CSS/JS) with a tap-to-start intro, premium animated pink background, multi-slide experience (countdown, title, photo popups, two videos, shayari split screen, final surprise, fireworks), and strict media/asset rules for reliable in-browser playback.",
+  "architectural_notes": [
+    "Single-page HTML/CSS/JS template with slide/state controller; start screen gates all media playback.",
+    "No audio playback before user tap; birthday.mp3 starts only after countdown completion.",
+    "During video slides, pause background music; resume after video ends (unless otherwise specified).",
+    "All assets must be referenced from root with exact filenames; no subfolders and no relative paths beyond filename.",
+    "Video behavior requirements: no autoplay, no crop (preserve aspect ratio), landscape-friendly layout.",
+    "Layout rules: several screens must be full-screen with no scroll (especially shayari and final message)."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-build-a-single-page-fully-interactive-birthday-website-experience-for-a-girl-named-sailvi-as-a-react-typescript-app-with-css-animations-tailwind-custom-css-as-needed-designed-to-run-reliably-in-a-modern-browser-without-slide-navigation-or-video-playback-errors",
+      "title": "Build a single-page, fully interactive birthday website experience for a girl named Sailvi as a React (TypeScript) app with CSS animations (Tailwind + custom CSS as needed), designed to run reliably in a modern browser without slide navigation or video playback errors.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-full-screen-start-screen-overlay-that-shows-a-premium-pink-animated-background-not-blank-and-centered-text-exactly-tap-anywhere-to-start-experience-with-a-romantic-elegant-font-feel-soft-glow-and-breathing-fade-animation-on-the-first-tap-click-hide-the-start-screen-show-slide-0-and-start-the-5-second-countdown",
+      "title": "Implement a full-screen start screen overlay that shows a premium pink animated background (not blank) and centered text exactly: \"Tap anywhere to start experience 💖\" with a romantic/elegant font feel, soft glow, and breathing/fade animation; on the first tap/click, hide the start screen, show Slide 0, and start the 5-second countdown.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-enforce-media-gating-rules-do-not-play-any-music-before-the-user-s-first-tap-click-only-start-the-background-music-after-the-slide-0-countdown-completes-pause-the-music-while-videos-are-playing-and-resume-afterwards-unless-the-user-navigates-away-from-the-experience",
+      "title": "Enforce media-gating rules: do not play any music before the user’s first tap/click; only start the background music after the Slide 0 countdown completes; pause the music while videos are playing and resume afterwards (unless the user navigates away from the experience).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-the-premium-animated-background-layer-used-throughout-the-experience-a-pink-gradient-base-transitioning-ffe6f0-ffd6e7-ffc2dd-with-3-5-floating-glow-circles-always-visible-and-at-least-15-continuously-falling-light-pink-balloons-moving-top-to-bottom-that-never-stop",
+      "title": "Create the premium animated background layer used throughout the experience: a pink gradient base transitioning #ffe6f0 → #ffd6e7 → #ffc2dd, with 3–5 floating glow circles always visible, and at least 15 continuously falling light-pink balloons moving top-to-bottom that never stop.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-slide-system-with-the-following-sequence-and-transitions-start-screen-slide-0-slide-1-slide-2-slide-3-slide-4-slide-5-slide-6-slide-7-support-auto-advance-where-specified-and-button-driven-navigation-where-specified-ensuring-no-scrolling-is-required-on-slides-that-must-fit-one-screen",
+      "title": "Implement a slide system with the following sequence and transitions: Start Screen → Slide 0 → Slide 1 → Slide 2 → Slide 3 → Slide 4 → Slide 5 → Slide 6 → Slide 7. Support auto-advance where specified and button-driven navigation where specified, ensuring no scrolling is required on slides that must fit one screen.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-slide-0-countdown-show-a-5-second-countdown-immediately-after-the-start-screen-is-dismissed-when-countdown-reaches-zero-start-playing-birthday-mp3-at-volume-0-6-with-looping-enabled-then-automatically-transition-to-slide-1",
+      "title": "Slide 0 (Countdown): show a 5-second countdown immediately after the start screen is dismissed; when countdown reaches zero, start playing \"birthday.mp3\" at volume 0.6 with looping enabled, then automatically transition to Slide 1.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-slide-1-title-display-the-title-in-one-line-exactly-happy-birthday-sailvi-where-each-word-has-its-own-underline-three-separate-underlines-each-underline-animates-left-to-right-with-a-soft-pink-glow-and-the-title-reveals-with-a-letter-by-letter-animation-include-a-button-labeled-click-for-surprise-that-transitions-to-slide-2",
+      "title": "Slide 1 (Title): display the title in ONE line exactly: \"HAPPY BIRTHDAY SAILVI\" where each word has its own underline (three separate underlines), each underline animates left-to-right with a soft pink glow, and the title reveals with a letter-by-letter animation. Include a button labeled \"Click for Surprise\" that transitions to Slide 2.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-slide-2-photos-popups-render-a-centered-2-2-grid-of-four-photos-using-the-exact-filenames-photo1-jpg-photo2-jpg-photo3-jpg-photo4-jpg-each-photo-tile-must-be-rounded-with-a-soft-shadow-display-bottom-text-exactly-tap-on-photos-on-tapping-each-photo-show-a-popup-message-with-the-corresponding-exact-text-1-4-track-distinct-photo-clicks-after-all-4-photos-have-been-tapped-4-total-reveal-enable-a-next-control-to-proceed-to-slide-3",
+      "title": "Slide 2 (Photos + Popups): render a centered 2×2 grid of four photos using the exact filenames: photo1.jpg, photo2.jpg, photo3.jpg, photo4.jpg. Each photo tile must be rounded with a soft shadow. Display bottom text exactly: \"Tap on Photos 💖\". On tapping each photo, show a popup message with the corresponding exact text (1–4). Track distinct photo clicks; after all 4 photos have been tapped (4 total), reveal/enable a \"Next\" control to proceed to Slide 3.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-heartbeat-play-button-ui-used-for-videos-a-round-pink-glow-button-with-a-heart-or-heart-play-icon-it-must-pulse-by-default-intensify-glow-on-hover-and-on-click-shrink-fade-while-initiating-video-playback",
+      "title": "Implement the heartbeat play button UI used for videos: a round pink-glow button with a heart or heart+play icon; it must pulse by default, intensify glow on hover, and on click shrink + fade while initiating video playback.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-slide-3-video-1-render-video1-mp4-in-landscape-orientation-without-autoplay-and-without-cropping-preserve-aspect-ratio-via-contain-letterbox-as-needed-overlay-the-heartbeat-play-button-to-start-playback-ensure-background-music-is-paused-while-this-video-plays-after-the-video-ends-automatically-advance-or-reveal-a-next-button-immediately-at-end-to-slide-4",
+      "title": "Slide 3 (Video 1): render video1.mp4 in landscape orientation without autoplay and without cropping (preserve aspect ratio via contain/letterbox as needed). Overlay the heartbeat play button to start playback. Ensure background music is paused while this video plays. After the video ends, automatically advance (or reveal a Next button immediately at end) to Slide 4.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-slide-4-video-2-same-behavior-as-slide-3-using-video2-mp4-no-autoplay-no-crop-heartbeat-play-button-initiates-playback-background-music-pauses-during-playback-and-after-video-ends-advance-to-slide-5",
+      "title": "Slide 4 (Video 2): same behavior as Slide 3 using video2.mp4; no autoplay, no crop, heartbeat play button initiates playback, background music pauses during playback, and after video ends advance to Slide 5.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-slide-5-shayari-create-a-full-screen-no-scroll-left-right-split-layout-where-both-parts-are-visible-at-the-same-time-with-no-container-box-render-the-left-side-lines-exactly-as-provided-and-the-right-side-lines-exactly-as-provided-animate-the-text-line-by-line-with-fading-on-both-sides-after-the-animation-finishes-show-a-next-button-to-advance-to-slide-6",
+      "title": "Slide 5 (Shayari): create a full-screen, no-scroll, left/right split layout where both parts are visible at the same time, with no container box. Render the left side lines exactly as provided and the right side lines exactly as provided. Animate the text line-by-line with fading on both sides. After the animation finishes, show a \"Next\" button to advance to Slide 6.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-slide-6-final-surprise-display-the-text-exactly-tap-for-final-surprise-with-a-glowing-pulse-and-hover-zoom-effect-on-click-tap-transition-to-slide-7",
+      "title": "Slide 6 (Final Surprise): display the text exactly \"Tap for Final Surprise 💖\" with a glowing pulse and hover zoom effect; on click/tap, transition to Slide 7.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-slide-7-final-message-fireworks-render-the-final-message-text-exactly-as-provided-fit-to-a-single-screen-with-no-scrolling-auto-fit-responsive-text-sizing-as-needed-and-automatically-start-a-fireworks-animation-effect-on-this-slide",
+      "title": "Slide 7 (Final Message + Fireworks): render the final message text exactly as provided, fit to a single screen with no scrolling (auto-fit/responsive text sizing as needed), and automatically start a fireworks animation effect on this slide.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-global-interaction-rules-do-not-display-any-hand-emoji-anywhere-in-the-ui-use-a-normal-cursor-or-a-love-themed-cursor-but-not-a-hand-emoji-and-ensure-clickable-elements-have-clear-affordances-without-violating-the-emoji-rule",
+      "title": "Apply global interaction rules: do not display any hand emoji anywhere in the UI; use a normal cursor or a love-themed cursor (but not a hand emoji), and ensure clickable elements have clear affordances without violating the emoji rule.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-enforce-the-asset-filename-template-rule-the-experience-must-reference-these-media-files-by-filename-only-no-folder-paths-and-assume-they-are-placed-at-the-app-s-static-root-photo1-jpg-photo2-jpg-photo3-jpg-photo4-jpg-video1-mp4-video2-mp4-birthday-mp3",
+      "title": "Enforce the asset/filename template rule: the experience must reference these media files by filename only (no folder paths) and assume they are placed at the app’s static root: photo1.jpg, photo2.jpg, photo3.jpg, photo4.jpg, video1.mp4, video2.mp4, birthday.mp3.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-and-apply-a-coherent-premium-romantic-visual-theme-across-all-slides-colors-typography-spacing-animation-style-aligned-with-an-elegant-pink-aesthetic-avoid-blue-purple-ensuring-readability-over-the-animated-background",
+      "title": "Create and apply a coherent premium romantic visual theme across all slides (colors, typography, spacing, animation style) aligned with an elegant pink aesthetic (avoid blue/purple), ensuring readability over the animated background.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-support-the-user-s-request-to-add-these-videos-by-ensuring-the-build-deployment-includes-two-video-files-at-the-static-public-root-named-video1-mp4-and-video2-mp4-filename-only-if-the-user-has-not-provided-videos-yet-keep-the-existing-graceful-behavior-warnings-placeholder-behavior-no-crash-and-document-that-video1-mp4-and-video2-mp4-are-required-assets",
+      "title": "Support the user’s request to “add these videos” by ensuring the build/deployment includes two video files at the static public root named video1.mp4 and video2.mp4 (filename-only). If the user has not provided videos yet, keep the existing graceful behavior (warnings/placeholder behavior; no crash) and document that video1.mp4 and video2.mp4 are required assets.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-asset-setup-md-to-explicitly-document-the-mapping-from-the-uploaded-filenames-to-the-required-template-filenames-photo1-jpg-photo4-jpg-and-reiterate-the-required-filenames-for-video1-mp4-video2-mp4-and-birthday-mp3-in-the-public-root",
+      "title": "Update frontend/ASSET_SETUP.md to explicitly document the mapping from the uploaded filenames to the required template filenames (photo1.jpg–photo4.jpg) and reiterate the required filenames for video1.mp4, video2.mp4, and birthday.mp3 in the public root.",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Implement tap-to-start start screen with premium pink animated background; no music before tap; begin slide 0 + countdown on tap",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Create premium animated background: pink gradient base, 3–5 floating glow circles always visible, and minimum 15 continuously falling light-pink balloons",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Build slide system (0–7) with required transitions and interactions (auto-advance, buttons, click tracking)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Slide 0: 5-second countdown then start birthday.mp3 at volume 0.6 loop and auto-advance to Slide 1",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Slide 1: one-line title 'HAPPY BIRTHDAY SAILVI' with individual animated underlines per word and letter-by-letter animation; button to Slide 2",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Slide 2: 2×2 centered photo grid with rounded cards/shadows; show exact popup messages on taps; after 4 photo clicks enable next",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Slides 3–4: two landscape videos with no autoplay and no crop; heartbeat play button overlay; pause music during video; advance after video ends",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Slide 5: full-screen left/right split shayari with line-by-line fade animation on both sides; no container box and no scrolling; next button after animation",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Slides 6–7: final surprise interaction then final message screen (no scroll, auto-fit) with fireworks auto-start",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Enforce root-only asset template using exact filenames (photo1-4.jpg, video1-2.mp4, birthday.mp3) with no folders/paths; ensure robust browser playback without slide/video errors",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Add the 4 user-uploaded images to the app’s static public root and map them to the exact filenames required by Slide 2: photo1.jpg, photo2.jpg, photo3.jpg, photo4.jpg (no folder paths). Use these source files in order: Snapchat-1050840213.jpg -> photo1.jpg, Snapchat-611037636.jpg -> photo2.jpg, IMG_20260205_190742.jpg -> photo3.jpg, IMG_20260206_020104.jpg -> photo4.jpg.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Ensure a happy birthday song file is available at the static public root with the exact filename birthday.mp3 so the existing background-music flow (start after countdown, volume 0.6, loop) works as implemented.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Sailvi Interactive Birthday Website",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
